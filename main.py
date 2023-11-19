@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 import cv2
-
+import numpy as np
 import util
 from sort.sort import *
 from util import get_car, read_license_plate, write_csv
@@ -12,10 +12,10 @@ mot_tracker = Sort()
 
 # load models
 coco_model = YOLO('yolov8n.pt')
-license_plate_detector = YOLO('./models/license_plate_detector.pt')
+license_plate_detector = YOLO('./models/yolov8m.pt') # license detector
 
 # load video
-cap = cv2.VideoCapture('./sample.mp4')
+cap = cv2.VideoCapture('./video.mkv')
 
 vehicles = [2, 3, 5, 7]
 
