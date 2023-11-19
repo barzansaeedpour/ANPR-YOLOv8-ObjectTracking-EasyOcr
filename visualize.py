@@ -25,6 +25,7 @@ def draw_border(img, top_left, bottom_right, color=(0, 255, 0), thickness=10, li
 
 
 results = pd.read_csv('./test_interpolated.csv')
+# results = pd.read_csv('./test.csv')
 
 # load video
 video_path = 'sample.mp4'

@@ -12,10 +12,10 @@ mot_tracker = Sort()
 
 # load models
 coco_model = YOLO('yolov8n.pt')
-license_plate_detector = YOLO('./models/yolov8m.pt') # license detector
+license_plate_detector = YOLO('./yolov8m.pt') # license detector
 
 # load video
-cap = cv2.VideoCapture('./video.mkv')
+cap = cv2.VideoCapture('./sample.mp4')
 
 vehicles = [2, 3, 5, 7]
 
@@ -54,6 +54,11 @@ while ret:
                 # process license plate
                 license_plate_crop_gray = cv2.cvtColor(license_plate_crop, cv2.COLOR_BGR2GRAY)
                 _, license_plate_crop_thresh = cv2.threshold(license_plate_crop_gray, 64, 255, cv2.THRESH_BINARY_INV)
+
+                # cv2.imshow('original_crop', license_plate_crop)
+                # cv2.imshow('original_crop', license_plate_crop_thresh)
+
+                # cv2.waitKey(0)
 
                 # read license plate number
                 license_plate_text, license_plate_text_score = read_license_plate(license_plate_crop_thresh)
